@@ -3,6 +3,8 @@ package com.harry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.lang.reflect.Constructor;
+
 @SpringBootApplication
 public class Chapter28Application {
 
@@ -20,6 +22,11 @@ public class Chapter28Application {
         //方式3
         Class c4 = Class.forName("com.harry.PersonEntity");
         System.out.println(c1 == c4);
+        Constructor con = c4.getConstructor();
+        Object o = con.newInstance();
+        System.out.println(o);
+        PersonEntity person = (PersonEntity) o;
+        person.show();
         SpringApplication.run(Chapter28Application.class, args);
     }
 }
